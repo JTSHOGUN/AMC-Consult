@@ -1,0 +1,419 @@
+@import "tailwindcss";
+
+@theme {
+  /* Brand tokens sampled from the AMC profile brand pages. Solid colours only: no gradients. */
+  --color-ink: #334269;
+  --color-ink-deep: #242f4d;
+  --color-accent: #4196cf;
+  --color-accent-soft: #dcebfa;
+  --color-link: #3e6cab;
+  --color-paper: #f6f8fb;
+  --color-fore: #22262e;
+
+  /* Information-surface tints (flat, cool family) */
+  --color-sky: #f0f6fc;
+  --color-bluewash: #e4eef9;
+  --color-mist: #e8ecf4;
+
+  /* Interaction palette: light rich washes + deep matching tones (hover/press feedback) */
+  --color-hov-mint: #e6f4ee;
+  --color-hov-sky: #e4f0fb;
+  --color-hov-aqua: #e0f1f5;
+  --color-hov-lavender: #eeeaf9;
+  --color-hov-peach: #fbeee6;
+  --color-hov-rose: #fae9ee;
+  --color-hov-lemon: #faf5df;
+  --color-hov-sage: #edf2e2;
+  --color-hov-sand: #f5efe6;
+
+  --color-deep-teal: #1e6b5e;
+  --color-deep-blue: #2c5f9e;
+  --color-deep-cyan: #1f6b7a;
+  --color-deep-plum: #6b4a8a;
+  --color-deep-terra: #a05a3c;
+  --color-deep-rose: #a8445e;
+  --color-deep-gold: #8a6a1f;
+  --color-deep-olive: #5c6b2e;
+  --color-deep-sand: #7a5b3d;
+
+  --font-display: var(--font-display), "Segoe UI", sans-serif;
+  --font-body: var(--font-body), "Segoe UI", sans-serif;
+
+  --radius-card: 12px;
+
+  /* Depth: layered soft shadows, never gradient fills */
+  --shadow-soft: 0 2px 8px rgba(36, 47, 77, 0.06), 0 12px 32px rgba(36, 47, 77, 0.07);
+  --shadow-lift: 0 6px 14px rgba(36, 47, 77, 0.1), 0 28px 60px rgba(36, 47, 77, 0.16);
+  --shadow-glass: 0 10px 36px rgba(18, 26, 48, 0.22), inset 0 1px 0 rgba(255, 255, 255, 0.28);
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    text-rendering: optimizeLegibility;
+  }
+
+  body {
+    background: var(--color-paper);
+    color: var(--color-fore);
+    font-family: var(--font-body);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  [id] {
+    scroll-margin-top: 6rem;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display);
+    color: var(--color-ink);
+    letter-spacing: -0.015em;
+    line-height: 1.12;
+    text-wrap: balance;
+  }
+
+  a {
+    color: var(--color-link);
+    text-underline-offset: 3px;
+    text-decoration-thickness: 1.5px;
+    transition: color 180ms ease-in;
+  }
+
+  a:hover {
+    color: var(--color-ink);
+  }
+
+  :focus-visible {
+    outline: 3px solid var(--color-accent);
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+
+  ::selection {
+    background: var(--color-accent);
+    color: #fff;
+  }
+}
+
+@layer components {
+  .container-page {
+    margin-inline: auto;
+    width: 100%;
+    max-width: 76rem;
+    padding-inline: 1.25rem;
+  }
+
+  /* ---------- Morphic surfaces (controlled, brand-tinted) ---------- */
+
+  .glass {
+    background: rgba(255, 255, 255, 0.12);
+    backdrop-filter: blur(18px) saturate(1.25);
+    -webkit-backdrop-filter: blur(18px) saturate(1.25);
+    border: 1px solid rgba(255, 255, 255, 0.26);
+    box-shadow: var(--shadow-glass);
+    border-radius: var(--radius-card);
+  }
+
+  .glass-light {
+    background: rgba(255, 255, 255, 0.72);
+    backdrop-filter: blur(20px) saturate(1.2);
+    -webkit-backdrop-filter: blur(20px) saturate(1.2);
+    border: 1px solid rgba(51, 66, 105, 0.1);
+    box-shadow: var(--shadow-soft), inset 0 1px 0 rgba(255, 255, 255, 0.8);
+    border-radius: var(--radius-card);
+  }
+
+  /* ---------- Tinted information surfaces (flat: no shadow, no white card) ---------- */
+
+  .surface {
+    border-radius: var(--radius-card);
+    border: 1px solid color-mix(in srgb, var(--color-ink) 8%, transparent);
+    transition:
+      transform 220ms cubic-bezier(0.22, 1, 0.36, 1),
+      background-color 220ms ease-in,
+      border-color 220ms ease-in,
+      box-shadow 220ms ease;
+  }
+
+  .surface-sky {
+    background: var(--color-sky);
+  }
+
+  .surface-blue {
+    background: var(--color-bluewash);
+  }
+
+  .surface-mist {
+    background: var(--color-mist);
+  }
+
+  /* Interactive rows: tint sweep + slide on hover, press feedback on click */
+  .row-link {
+    transition:
+      background-color 200ms ease-in,
+      padding-left 220ms cubic-bezier(0.22, 1, 0.36, 1),
+      color 180ms ease-in;
+  }
+
+  .row-link:hover {
+    background-color: var(--color-sky);
+    padding-left: 1.15rem;
+    padding-right: 0.6rem;
+  }
+
+  .press {
+    transition: transform 160ms cubic-bezier(0.34, 1.3, 0.64, 1);
+  }
+
+  .press:hover {
+    transform: translateY(-2px);
+  }
+
+  .press:active {
+    transform: scale(0.98);
+    transition-duration: 90ms;
+    transition-timing-function: ease-in;
+  }
+
+  /* ---------- Buttons ---------- */
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    border-radius: 999px;
+    font-weight: 700;
+    font-family: var(--font-display);
+    font-size: 0.95rem;
+    padding: 0.85rem 1.6rem;
+    transition:
+      background-color 200ms cubic-bezier(0.22, 1, 0.36, 1),
+      color 200ms ease,
+      transform 200ms cubic-bezier(0.22, 1, 0.36, 1),
+      box-shadow 200ms ease,
+      border-color 200ms ease;
+    text-decoration: none;
+    cursor: pointer;
+    border: 2px solid transparent;
+  }
+
+  .btn:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-soft);
+  }
+
+  .btn:active {
+    transform: translateY(0) scale(0.97);
+    box-shadow: none;
+    transition-duration: 90ms;
+    transition-timing-function: ease-in;
+  }
+
+  .btn-primary {
+    background: var(--color-ink);
+    color: #fff;
+    border-color: var(--color-ink);
+  }
+
+  .btn-primary:hover {
+    background: var(--color-ink-deep);
+    color: #fff;
+  }
+
+  .btn-secondary {
+    background: transparent;
+    color: var(--color-ink);
+    border-color: var(--color-ink);
+  }
+
+  .btn-secondary:hover {
+    background: var(--color-ink);
+    color: #fff;
+  }
+
+  .btn-light {
+    background: #fff;
+    color: var(--color-ink);
+    border-color: #fff;
+  }
+
+  .btn-light:hover {
+    background: var(--color-accent-soft);
+    color: var(--color-ink);
+  }
+
+  /* Signature arch mask for photos */
+  .arch {
+    border-radius: 50% 50% 12px 12px / 34% 34% 12px 12px;
+    overflow: hidden;
+    box-shadow: var(--shadow-soft);
+  }
+
+  .tag {
+    display: inline-flex;
+    align-items: center;
+    border-radius: 999px;
+    padding: 0.3rem 0.85rem;
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    background: var(--color-accent-soft);
+    color: var(--color-ink);
+    border: 1px solid color-mix(in srgb, var(--color-accent) 35%, transparent);
+    transition:
+      background-color 180ms ease-in,
+      transform 180ms cubic-bezier(0.34, 1.3, 0.64, 1);
+  }
+
+  .tag:hover {
+    background: color-mix(in srgb, var(--color-accent) 28%, #fff);
+    transform: translateY(-1px);
+  }
+
+  .card {
+    background: #fff;
+    border: 1px solid color-mix(in srgb, var(--color-ink) 12%, transparent);
+    border-radius: var(--radius-card);
+    transition:
+      transform 240ms cubic-bezier(0.22, 1, 0.36, 1),
+      box-shadow 240ms ease,
+      border-color 240ms ease;
+  }
+
+  .card-hover:hover,
+  a.card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lift);
+    border-color: color-mix(in srgb, var(--color-accent) 45%, transparent);
+  }
+
+  .card-hover:active,
+  a.card:active {
+    transform: translateY(-1px) scale(0.99);
+    transition-duration: 90ms;
+    transition-timing-function: ease-in;
+  }
+
+  .scallop-band {
+    background-image: url("/images/scallop.jpg");
+    background-repeat: repeat-x;
+    background-size: auto 32px;
+    height: 32px;
+    background-color: var(--color-ink);
+  }
+
+  .link-arrow::after {
+    content: "→";
+    margin-left: 0.45rem;
+    transition: transform 200ms cubic-bezier(0.22, 1, 0.36, 1);
+    display: inline-block;
+  }
+
+  .link-arrow:hover::after {
+    transform: translateX(5px);
+  }
+
+  .eyebrow {
+    font-family: var(--font-display);
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--color-accent);
+  }
+
+  /* Interactive photo: zoom + scrim on hover */
+  .photo-zoom {
+    overflow: hidden;
+    border-radius: var(--radius-card);
+  }
+
+  .photo-zoom img {
+    transition: transform 550ms cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .photo-zoom:hover img,
+  .group:hover .photo-zoom img {
+    transform: scale(1.05);
+  }
+}
+
+/* ---------- Motion: hero entrance + scroll reveals (intensity 3) ---------- */
+
+@keyframes hero-in {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .reveal {
+      animation: hero-in linear both;
+      animation-timeline: view();
+      animation-range: entry 5% cover 28%;
+    }
+    .reveal-stagger > * {
+      animation: hero-in linear both;
+      animation-timeline: view();
+      animation-range: entry 0% cover 22%;
+    }
+    .reveal-stagger > *:nth-child(2) {
+      animation-range: entry 2% cover 25%;
+    }
+    .reveal-stagger > *:nth-child(3) {
+      animation-range: entry 4% cover 28%;
+    }
+    .reveal-stagger > *:nth-child(4) {
+      animation-range: entry 6% cover 31%;
+    }
+    .reveal-stagger > *:nth-child(5) {
+      animation-range: entry 8% cover 34%;
+    }
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .hero-in > * {
+    animation: hero-in 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+  .hero-in > *:nth-child(1) {
+    animation-delay: 0.05s;
+  }
+  .hero-in > *:nth-child(2) {
+    animation-delay: 0.16s;
+  }
+  .hero-in > *:nth-child(3) {
+    animation-delay: 0.27s;
+  }
+  .hero-in > *:nth-child(4) {
+    animation-delay: 0.38s;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .hero-in > *,
+  .reveal,
+  .reveal-stagger > *,
+  .btn,
+  .card,
+  .surface,
+  .press,
+  .row-link {
+    animation: none !important;
+    transition: none !important;
+    transform: none !important;
+  }
+}
