@@ -45,13 +45,18 @@ async function storeCv(file: File): Promise<string> {
   const safeName = clean(file.name, 200) || "cv";
   if (!CV_ALLOWED_EXT.test(safeName)) throw new Error("unsupported CV type");
   if (file.size === 0 || file.size > CV_MAX_BYTES) throw new Error("CV size out of range");
-  const dir = path.join(process.env.DATA_DIR || path.join(process.cwd(), "data"), "uploads");
+  const dir = path.join(
+    /* turbopackIgnore: true */ process.env.DATA_DIR || path.join(process.cwd(), "data"),
+    "uploads",
+  );
   await fs.mkdir(dir, { recursive: true, mode: 0o700 });
   const ext = (safeName.match(CV_ALLOWED_EXT) || [".bin"])[0].toLowerCase();
   const stored = `${Date.now()}-${Math.random().toString(36).slice(2, 10)}${ext}`;
-  await fs.writeFile(path.join(dir, stored), Buffer.from(await file.arrayBuffer()), {
-    mode: 0o600,
-  });
+  await fs.writeFile(
+    path.join(/* turbopackIgnore: true */ dir, stored),
+    Buffer.from(await file.arrayBuffer()),
+    { mode: 0o600 },
+  );
   return stored;
 }
 
@@ -62,7 +67,7 @@ async function store(fileName: string, record: Record<string, unknown>) {
   try {
     await fs.mkdir(dir, { recursive: true, mode: 0o700 });
     await fs.appendFile(
-      path.join(dir, fileName),
+      path.join(/* turbopackIgnore: true */ dir, fileName),
       `${JSON.stringify({ ...record, receivedAt: new Date().toISOString() })}\n`,
       { encoding: "utf8", mode: 0o600 },
     );

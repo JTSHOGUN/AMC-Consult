@@ -22,7 +22,7 @@ function rateLimit(ip: string): boolean {
   return bucket.count <= MAX_POSTS_PER_WINDOW;
 }
 
-export function middleware(request: NextRequest) {
+export function proxy(request: NextRequest) {
   if (request.method === "POST") {
     const ip =
       request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ||
