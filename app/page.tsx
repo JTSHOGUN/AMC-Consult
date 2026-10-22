@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { ServicesPanel } from "@/components/services-panel";
+import ImageCycle from "@/components/image-cycle";
 import { CtaBand } from "@/components/cta-band";
 import { about, clients, leadership, phases, projects, sectors, stats } from "@/lib/content";
 import { hoverBorderCycle, hoverCycle, groupDeepCycle } from "@/lib/palette";
@@ -160,14 +161,13 @@ export default function HomePage() {
             >
               {p.image && (
                 <div className={`photo-zoom ${size.includes("12") ? "h-full min-h-60" : "h-56"}`}>
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img
+                  <ImageCycle
                     src={p.image}
+                    altSrc={p.imageAltSrc}
                     alt={p.imageAlt ?? ""}
                     width={640}
                     height={400}
-                    loading="lazy"
-                    className="h-full w-full object-cover"
+                    wrapClassName="h-full w-full"
                   />
                 </div>
               )}

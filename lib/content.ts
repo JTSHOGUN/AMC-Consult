@@ -186,6 +186,7 @@ export type Project = {
   activities: string[];
   image?: string;
   imageAlt?: string;
+  imageAltSrc?: string;
 };
 
 // FLAG (launch gate): UGX contract values come from AMC's own published profile.
@@ -208,15 +209,16 @@ export const projects: Project[] = [
       "Delivery of Business Development Services (BDS)",
       "Finance readiness support for selected SMEs",
     ],
-    image: "/images/simon-ugefa.jpg",
-    imageAlt: "Simon Katushabe supporting SMEs during the UGEFA accelerator",
+    image: "/images/work-ugefa.jpg",
+    imageAlt: "Facilitator presenting a business planning canvas at a UGEFA training session",
+    imageAltSrc: "/images/work-ugefa-alt.jpg",
   },
   {
     slug: "uwa-climate-risk-disaster-risk",
     client: "Uganda Wildlife Authority (UWA)",
     title: "Climate risk assessment and disaster risk reduction plan",
     years: "2024–2025",
-    status: "Ongoing",
+    status: "Completed",
     funder: "Uganda Wildlife Authority",
     sector: "Environment",
     service: "social-environmental-research",
@@ -227,15 +229,16 @@ export const projects: Project[] = [
       "Development of a disaster risk reduction and climate mitigation plan",
       "Capacity building for UWA staff",
     ],
-    image: "/images/uwa-lake-mburo.jpg",
-    imageAlt: "UWA staff at Lake Mburo National Park during a disaster risk assessment",
+    image: "/images/work-uwa.jpg",
+    imageAlt: "AMC facilitators working with participants during field sessions",
+    imageAltSrc: "/images/work-uwa-alt.jpg",
   },
   {
     slug: "fca-drdisp",
     client: "Finn Church Aid (DRDIP projects)",
     title: "Multiple assignments under the Development Response to Displacement Impacts Project",
     years: "2019–2024",
-    status: "Ongoing and Completed",
+    status: "Completed",
     funder: "Finn Church Aid (DRDIP)",
     sector: "Agriculture and food security",
     service: "project-cycle-management",
@@ -247,15 +250,16 @@ export const projects: Project[] = [
       "Community planning guides for land tenure systems and natural resource access (2020–2021)",
       "Supply of irrigation equipment to improve agricultural infrastructure (UGX 195,000,000, 2019)",
     ],
-    image: "/images/field-delivery.jpg",
-    imageAlt: "AMC field delivery activity",
+    image: "/images/work-drdisp.jpg",
+    imageAlt: "AMC facilitators presenting project work to participants",
+    imageAltSrc: "/images/work-drdisp-alt.jpg",
   },
   {
     slug: "wezesha-brmm-siyb",
     client: "Wezesha Impact (ILO BRMM project)",
     title: "SIYB training for Ugandan returnees under the BRMM project",
     years: "2024–2025",
-    status: "Ongoing",
+    status: "Completed",
     funder: "International Labour Organization (BRMM)",
     sector: "Enterprise development",
     service: "enterprise-economic-development",
@@ -265,8 +269,9 @@ export const projects: Project[] = [
       "SIYB entrepreneurship training for returnees",
       "Business mentorship and reintegration support",
     ],
-    image: "/images/siyb-game.jpg",
-    imageAlt: "Facilitator running the ILO SIYB Module 1 game",
+    image: "/images/work-siyb.jpg",
+    imageAlt: "Participants taking part in an interactive team exercise during SIYB training",
+    imageAltSrc: "/images/work-siyb-alt.jpg",
   },
   {
     slug: "rwayec-tororo",
@@ -283,8 +288,9 @@ export const projects: Project[] = [
       "Climate risk management training for farmer groups across all sub-counties, culminating in a stakeholder session in Tororo Municipality (UGX 87,000,000, EU-funded, 2020)",
       "Agribusiness training and coaching for cassava and potato value chain actors, forming over 300 farmer groups and clusters (UGX 120,000,000, Government of Uganda, 2014)",
     ],
-    image: "/images/classroom.jpg",
-    imageAlt: "Training participants at an AMC workshop",
+    image: "/images/work-tororo.jpg",
+    imageAlt: "Training participants and the AMC team at a group goals activity",
+    imageAltSrc: "/images/work-tororo-alt.jpg",
   },
   {
     slug: "ccyef-strategic-plan",

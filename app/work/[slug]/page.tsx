@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { CtaBand } from "@/components/cta-band";
+import ImageCycle from "@/components/image-cycle";
 import { projects, services } from "@/lib/content";
 import { hoverCycle } from "@/lib/palette";
 
@@ -66,14 +67,13 @@ export default async function CaseStudyPage({ params }: { params: Promise<{ slug
 
           {p.image && (
             <div className="arch">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
- loading="lazy" decoding="async"
+              <ImageCycle
                 src={p.image}
+                altSrc={p.imageAltSrc}
                 alt={p.imageAlt ?? ""}
                 width={640}
                 height={480}
-                className="aspect-[5/4] w-full object-cover"
+                wrapClassName="aspect-[5/4] w-full"
               />
             </div>
           )}

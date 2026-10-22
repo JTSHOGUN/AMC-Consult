@@ -31,8 +31,8 @@ export default function AboutPage() {
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
  loading="lazy" decoding="async"
-            src="/images/peter-supervising.jpg"
-            alt="Peter Owori supervising participants during group work"
+            src="/images/about-team.jpg"
+            alt="AMC team members applauding participants during a group activity"
             width={660}
             height={462}
             className="aspect-[5/4] w-full object-cover"

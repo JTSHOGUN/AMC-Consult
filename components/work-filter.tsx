@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useMemo, useState } from "react";
 import { projects, services } from "@/lib/content";
+import ImageCycle from "@/components/image-cycle";
 import { groupDeepCycle, hoverBorderCycle, hoverCycle, washFillCycle } from "@/lib/palette";
 
 const sectors = Array.from(new Set(projects.map((p) => p.sector)));
@@ -89,14 +90,14 @@ export function WorkFilter() {
                 className={`card card-hover group flex h-full flex-col overflow-hidden no-underline ${hoverBorderCycle[idx % hoverBorderCycle.length]}`}
               >
                 {p.image && (
-                  // eslint-disable-next-line @next/next/no-img-element
-                  <img
+                  <ImageCycle
                     src={p.image}
+                    altSrc={p.imageAltSrc}
                     alt={p.imageAlt ?? ""}
                     width={640}
                     height={360}
-                    loading="lazy"
-                    className="h-52 w-full object-cover transition-transform duration-500 group-hover:scale-[1.04]"
+                    wrapClassName="h-52 w-full"
+                    className="transition-transform duration-500 group-hover:scale-[1.04]"
                   />
                 )}
                 <div className={`flex flex-1 flex-col p-6 ${washFillCycle[idx % washFillCycle.length]}`}>
