@@ -54,10 +54,10 @@ export default function HomePage() {
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
  loading="lazy" decoding="async"
-              src="/images/group-work.jpg"
-              alt="AMC training participants presenting group work during a facilitated session"
-              width={660}
-              height={532}
+              src="/images/home-hero.jpg"
+              alt="Speaker presenting during an AMC training session"
+              width={640}
+              height={800}
               className="aspect-[4/5] w-full object-cover"
             />
           </div>
