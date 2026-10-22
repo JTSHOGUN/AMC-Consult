@@ -90,10 +90,10 @@ export default function AboutPage() {
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
  loading="lazy" decoding="async"
-              src="/images/peter-flipchart.jpg"
+              src="/images/peter-director-message.jpg"
               alt="Peter Owori, Managing Director, facilitating a session"
-              width={528}
-              height={254}
+              width={640}
+              height={512}
               className="aspect-[5/4] w-full object-cover"
             />
           </div>
