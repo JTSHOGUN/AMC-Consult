@@ -24,9 +24,10 @@ export default function ApproachPage() {
       </section>
 
       <section className="border-y border-ink/10 bg-white">
-        <div className="container-page divide-y divide-ink/12">
+        <div>
           {phases.map((ph, i) => (
-            <article key={ph.n} className={`grid gap-8 py-10 transition-colors duration-200 ease-in lg:grid-cols-[0.9fr_1.1fr] lg:gap-16 lg:py-12 ${["hover:bg-hov-sky", "hover:bg-hov-mint", "hover:bg-hov-lavender"][i]}`}>
+            <article key={ph.n} className={`transition-colors duration-200 ease-in ${["hover:bg-hov-sky", "hover:bg-hov-mint", "hover:bg-hov-lavender"][i]}`}>
+              <div className={`container-page grid gap-8 py-10 lg:grid-cols-[0.9fr_1.1fr] lg:gap-16 lg:py-12 ${i > 0 ? "border-t border-ink/12" : ""}`}>
               <div>
                 <p className={`font-display text-6xl font-extrabold ${["text-deep-blue", "text-deep-teal", "text-deep-plum"][i]}`}>
                   {ph.n}
@@ -54,6 +55,7 @@ export default function ApproachPage() {
                     </li>
                   ))}
                 </ul>
+              </div>
               </div>
             </article>
           ))}
