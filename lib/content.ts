@@ -379,7 +379,6 @@ export const team: Person[] = [
     role: "Development Finance Policy Specialist",
     bio: "Based in Zimbabwe, Tirivangani is an expert in sovereign debt, taxation, and climate finance. He previously led debt management work at AFRODAD.",
     photo: "/images/tirivangani-mutazu.jpg",
-    greyscale: true,
   },
   {
     slug: "josephine-okoth",
