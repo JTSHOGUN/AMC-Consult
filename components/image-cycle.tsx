@@ -3,8 +3,8 @@
 import { useEffect, useState } from "react";
 
 /**
- * Crossfades between two photos of the same assignment every 7 seconds
- * with a smooth 7s ease-in-out transition. With prefers-reduced-motion
+ * Crossfades between two photos of the same assignment every 15 seconds
+ * with a smooth 15s ease-in-out transition. With prefers-reduced-motion
  * the primary image stays static.
  */
 export default function ImageCycle({
@@ -31,12 +31,12 @@ export default function ImageCycle({
   useEffect(() => {
     if (!altSrc) return;
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-    const id = window.setInterval(() => setShowAlt((v) => !v), 3000);
+    const id = window.setInterval(() => setShowAlt((v) => !v), 15000);
     return () => window.clearInterval(id);
   }, [altSrc]);
 
   const layer = (visible: boolean) =>
-    `absolute inset-0 transition-opacity duration-[7000ms] ease-in-out ${
+    `absolute inset-0 transition-opacity duration-[15000ms] ease-in-out ${
       visible ? "opacity-100" : "opacity-0"
     }`;
 
