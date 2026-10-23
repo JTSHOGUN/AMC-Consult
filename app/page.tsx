@@ -79,7 +79,7 @@ export default function HomePage() {
       {/* 2. Client logo strip (tight band, logos react on hover) */}
       <section aria-label="Selected clients" className="border-y border-ink/10 bg-white py-5">
         <div className="container-page">
-          <ul className="flex items-center gap-10 overflow-x-auto pb-1">
+          <ul className="clients-ribbon flex items-center gap-10 overflow-x-auto pb-1">
             {clients.logos.map((c) => (
               <li key={c.src} className="flex-none">
                 {/* eslint-disable-next-line @next/next/no-img-element */}

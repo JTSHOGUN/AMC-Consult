@@ -355,6 +355,29 @@
   .group:hover .photo-zoom img {
     transform: scale(1.05);
   }
+
+  /* Client ribbon scrollbar: low-opacity teal */
+  .clients-ribbon {
+    scrollbar-width: thin;
+    scrollbar-color: rgb(30 107 94 / 0.3) transparent;
+  }
+
+  .clients-ribbon::-webkit-scrollbar {
+    height: 6px;
+  }
+
+  .clients-ribbon::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  .clients-ribbon::-webkit-scrollbar-thumb {
+    background: rgb(30 107 94 / 0.3);
+    border-radius: var(--radius-card);
+  }
+
+  .clients-ribbon::-webkit-scrollbar-thumb:hover {
+    background: rgb(30 107 94 / 0.5);
+  }
 }
 
 /* ---------- Motion: hero entrance + scroll reveals (intensity 3) ---------- */
