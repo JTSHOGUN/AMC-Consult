@@ -25,12 +25,13 @@ export default function ServicesPage() {
       </section>
 
       <section className="border-y border-ink/10 bg-white">
-        <div className="container-page divide-y divide-ink/12">
+        <div>
           {services.map((s, i) => (
             <article
               key={s.slug}
-              className={`grid items-center gap-8 py-10 transition-colors duration-200 ease-in lg:grid-cols-2 lg:gap-14 lg:py-12 ${servicePalette[s.slug].wash} ${i % 2 === 1 ? "lg:[&>*:first-child]:order-2" : ""}`}
+              className={`transition-colors duration-200 ease-in ${servicePalette[s.slug].wash}`}
             >
+              <div className={`container-page grid items-center gap-8 py-10 lg:grid-cols-2 lg:gap-14 lg:py-12 ${i > 0 ? "border-t border-ink/12" : ""} ${i % 2 === 1 ? "lg:[&>*:first-child]:order-2" : ""}`}>
               <div>
                 <p className={`font-display text-sm font-bold uppercase tracking-[0.14em] ${servicePalette[s.slug].deep}`}>
                   Service {String(i + 1).padStart(2, "0")}
@@ -64,6 +65,7 @@ export default function ServicesPage() {
                     </li>
                   ))}
                 </ul>
+              </div>
               </div>
             </article>
           ))}
